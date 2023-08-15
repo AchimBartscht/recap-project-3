@@ -27,7 +27,7 @@ async function fetchCharacters() {
     cardContainer.append(newCharacterCard);
   });
   maxPage = data.info.pages;
-  pagination.textContent = `${page} / ${maxPage} `;
+  pagination.textContent = `${page} / ${maxPage}`;
 }
 
 fetchCharacters();
