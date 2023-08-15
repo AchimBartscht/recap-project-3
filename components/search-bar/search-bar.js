@@ -16,7 +16,7 @@ export function createSearchBar() {
   //Create and append search-bar button to search bar
   const searchBarButton = document.createElement("button");
   searchBarButton.classList.add("search-bar__button");
-  searchBar.ariaLabel = "search for character";
+  searchBarButton.ariaLabel = "search for character";
   searchBar.append(searchBarButton);
 
   //Create and append button-icon to button
