@@ -33,7 +33,7 @@ async function fetchCharacters() {
 fetchCharacters();
 
 nextButton.addEventListener("click", () => {
-  if (page <= 42) {
+  if (page <= maxPage) {
     page += 1;
     fetchCharacters();
   }
