@@ -4,7 +4,7 @@ export function createSearchBar() {
   searchBar.setAttribute("action", "");
   searchBar.setAttribute("data-js", "search-bar");
 
-  //Create and append search-bar input element with search bar
+  //Create and append search-bar input element to search bar
   const searchBarInput = document.createElement("input");
   searchBarInput.name = "query";
   searchBarInput.classList.add("search-bar__input");
@@ -13,7 +13,7 @@ export function createSearchBar() {
   searchBarInput.ariaLabel = "character name";
   searchBar.append(searchBarInput);
 
-  //Create and append search-bar button with search bar
+  //Create and append search-bar button to search bar
   const searchBarButton = document.createElement("button");
   searchBarButton.classList.add("search-bar__button");
   searchBar.ariaLabel = "search for character";
