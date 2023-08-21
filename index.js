@@ -15,6 +15,7 @@ let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
+//Fetch data from API and create character cards with forEach from character array
 async function fetchCharacters() {
   cardContainer.innerHTML = "";
   const response = await fetch(
@@ -33,34 +34,26 @@ async function fetchCharacters() {
 fetchCharacters();
 
 //Create navigation-pane elements with the respective create functions (createButton & createPagination) and append them to the navigation container
-const prevButton = createButton("previous", "prev");
-const pagination = createPagination();
-const nextButton = createButton("next", "next");
-navigation.append(prevButton, pagination, nextButton);
-
-//Create search-bar with the create-search-bar function and append it to the search-bar container
-const searchBar = createSearchBar();
-searchBarContainer.append(searchBar);
-
-//Add event listeners to next- and prev-button
-nextButton.addEventListener("click", () => {
-  if (page <= maxPage) {
-    page += 1;
-    fetchCharacters();
-  }
-});
-
-prevButton.addEventListener("click", () => {
+const prevButton = createButton("previous", "prev", () => {
   if (page > 1) {
     page -= 1;
     fetchCharacters();
   }
 });
+const pagination = createPagination();
+const nextButton = createButton("next", "next", () => {
+  if (page < maxPage) {
+    page += 1;
+    fetchCharacters();
+  }
+});
+navigation.append(prevButton, pagination, nextButton);
 
-//Add functionality to search bar
-searchBar.addEventListener("submit", (event) => {
+//Create search-bar with the create-search-bar function and append it to the search-bar container
+const searchBar = createSearchBar((event) => {
   event.preventDefault();
   searchQuery = event.target[0].value;
   page = 1;
   fetchCharacters();
 });
+searchBarContainer.append(searchBar);

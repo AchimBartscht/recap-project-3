@@ -1,8 +1,9 @@
-export function createSearchBar() {
+export function createSearchBar(onSubmit) {
   const searchBar = document.createElement("form");
   searchBar.classList.add("search-bar");
   searchBar.setAttribute("action", "");
   searchBar.setAttribute("data-js", "search-bar");
+  searchBar.addEventListener("submit", onSubmit);
 
   //Create and append search-bar input element to search bar
   const searchBarInput = document.createElement("input");
