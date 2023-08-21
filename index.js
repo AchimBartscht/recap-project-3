@@ -1,8 +1,5 @@
 import createCharacterCard from "./components/card/card.js";
-import {
-  createNextButton,
-  createPrevButton,
-} from "./components/nav-button/nav-button.js";
+import { createButton } from "./components/nav-button/nav-button.js";
 import { createPagination } from "./components/nav-pagination/nav-pagination.js";
 import { createSearchBar } from "./components/search-bar/search-bar.js";
 
@@ -11,13 +8,7 @@ const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
 
-// const searchBar = document.querySelector('[data-js="search-bar"]');
-
 const navigation = document.querySelector('[data-js="navigation"]');
-
-// const prevButton = document.querySelector('[data-js="button-prev"]');
-// const nextButton = document.querySelector('[data-js="button-next"]');
-// const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
 let maxPage = 1;
@@ -39,16 +30,15 @@ async function fetchCharacters() {
   maxPage = data.info.pages;
   pagination.textContent = `${page} / ${maxPage}`;
 }
-
 fetchCharacters();
 
-//Create navigation-pane elements with the respective create functions and append them to the navigation container
-const prevButton = createPrevButton();
+//Create navigation-pane elements with the respective create functions (createButton & createPagination) and append them to the navigation container
+const prevButton = createButton("previous", "prev");
 const pagination = createPagination();
-const nextButton = createNextButton();
+const nextButton = createButton("next", "next");
 navigation.append(prevButton, pagination, nextButton);
 
-//Create search-bar with the create function and append it to the search-bar container
+//Create search-bar with the create-search-bar function and append it to the search-bar container
 const searchBar = createSearchBar();
 searchBarContainer.append(searchBar);
 
